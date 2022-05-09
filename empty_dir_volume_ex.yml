@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-ex
+spec:
+  containers:
+  - image: alpine
+    imagePullPolicy: IfNotPresent
+    name: container-1
+    command: ['sh', '-c', 'echo container1 is running ; sleep 3600']
+
+    volumeMounts:
+    - mountPath: /data1
+      name: shared-volume
+
+  - image: alpine
+    imagePullPolicy: IfNotPresent
+    name: container-2
+    command: ['sh', '-c', 'echo container 2 is Running ; sleep 3600']
+
+    volumeMounts:
+    - mountPath: /data2
+      name: shared-volume
+  volumes:
+  - name: shared-volume
+    emptyDir: {}

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: 'WORKER ROLE'
+      username: 'NAME'
+      groups:
+        - ...
+        - system:nodes

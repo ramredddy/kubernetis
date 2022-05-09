@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: get-hostname
+spec:
+  backoffLimit: 4
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      containers:
+      - name: hostname
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        args: ["echo hello from $HOSTNAME!"]
+      restartPolicy: Never
+
